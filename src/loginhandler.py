@@ -1,13 +1,9 @@
 from flask import request,jsonify
 import os
-import env
-import logging
-from functools import wraps
-from req_resp import *
-from auth import *
-from utils import get_logger
+from src.auth import *
+from src.utils import get_logger
 import threading
-from thumbnails.tasks import generate_thumbnails_bulk
+from src.thumbnails.tasks import generate_thumbnails_bulk
 
 logger = get_logger()
 

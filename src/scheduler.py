@@ -1,9 +1,7 @@
 import threading
 import time
-import logging
-import uuid
 from functools import wraps
-from utils import get_logger
+from src.utils import get_logger
 
 logger = get_logger()
 

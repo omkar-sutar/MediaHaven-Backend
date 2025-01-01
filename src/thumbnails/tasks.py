@@ -2,7 +2,7 @@ from PIL import Image, ImageOps
 from moviepy.editor import VideoFileClip
 import os
 from src import env
-from utils import get_logger
+from src.utils import get_logger
 
 THUMBNAIL_SIZE=200,200
 TMP_DIR="tmp"

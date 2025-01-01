@@ -1,13 +1,12 @@
-import env
-from auth import authorize
+from src import env
+from src.auth import authorize
 import os
 from flask import request, Response
-from req_resp import *
+from src.req_resp import *
 from flask import send_from_directory
 from urllib.parse import unquote
-import utils
-from thumbnails.tasks import transform_filename, compress_image, TMP_DIR
-from utils import profile
+from src import utils
+from src.thumbnails.tasks import transform_filename, compress_image, TMP_DIR
 
 logger = utils.get_logger()
 
