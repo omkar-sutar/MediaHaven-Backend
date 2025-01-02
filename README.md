@@ -38,7 +38,7 @@ The MediaHaven API Server provides a simple and efficient way to manage and back
 
    This configuration creates backup folders for the registered users in the `/data` directory. The `/data` directory is mapped to a host directory via Docker mounts.
 
-3. **Build the Docker image** 🐋
+3. **Build the Docker image** 🐋 (optional but recommended; find instructions below to run from source)
 
    ```bash
    ./docker_build.sh
@@ -59,6 +59,8 @@ docker run -d -v "/host/dir:/data" \
 > **Note:** Replace `/host/dir` with the actual directory path on the host system that will be used to store data.
 
 You can also use the `docker_run.sh` script to perform the above operation. Ensure the script is edited to reflect your specific configuration.
+
+> To run from source, use 'run_from_source.sh`
 
 ---
 
