@@ -5,7 +5,7 @@ export PYTHONPATH=$(dirname "$0")
 while true; do
   echo "Starting mediahevenbd"
 #  python /opt/src/main.py
-  gunicorn --bind 0.0.0.0:5001 -c /opt/gunicorn.conf.py src.main:app
+  gunicorn -c /opt/gunicorn.conf.py src.main:app
   # Check the exit status
   if [ $? -ne 0 ]; then
     echo "Server crashed. Restarting..."

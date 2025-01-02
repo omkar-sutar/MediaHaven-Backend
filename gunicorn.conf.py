@@ -1,4 +1,5 @@
 # Number of worker processes
+import os
 workers = 4  # Adjust based on CPU cores and workload
 
 # Worker class (sync, async, etc.)
@@ -8,7 +9,7 @@ worker_class = "sync"
 timeout = 120
 
 # The IP address and port to bind
-bind = "0.0.0.0:8000"
+bind = f"0.0.0.0:{os.getenv('SELF_PORT',5001)}"
 
 # Enable access log
 accesslog = "-"
