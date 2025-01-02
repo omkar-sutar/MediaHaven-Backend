@@ -6,7 +6,7 @@ The MediaHaven API Server provides a simple and efficient way to manage and back
 
 ## Usage
 
-### Step 1: Configure the Server
+### Step 1: Configure the Server ⚙️
 
 1. **Create a `.env` file**
 
@@ -38,7 +38,7 @@ The MediaHaven API Server provides a simple and efficient way to manage and back
 
    This configuration creates backup folders for the registered users in the `/data` directory. The `/data` directory is mapped to a host directory via Docker mounts.
 
-3. **Build the Docker image**
+3. **Build the Docker image** 🐋
 
    ```bash
    ./docker_build.sh
@@ -46,7 +46,7 @@ The MediaHaven API Server provides a simple and efficient way to manage and back
 
 ---
 
-### Step 2: Start the Server
+### Step 2: Start the Server 🚀
 
 Run the following command to start the server:
 
