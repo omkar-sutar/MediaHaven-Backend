@@ -44,7 +44,9 @@ class MediaHandler:
             filepath = os.path.join(dirpath,file)
             if not os.path.isfile(filepath) or (allowed_filetypes and not any(filepath.endswith(ext) for ext in allowed_filetypes.split(','))):
                 continue
-            ctime = os.path.getctime(filepath)
+            # Cant set ctime of file in python
+            # Hence at time of upload only set mtime and use this for sorting
+            ctime = os.path.getmtime(filepath)
             #date = datetime.fromtimestamp(mtime)
             #date=date.isoformat()
             #date_formatted=f"{date.year}-{date.month}-{date.day}-{date.hour}-{date.min}-{date.second}-{date.microsecond}"
@@ -139,6 +141,17 @@ class MediaHandler:
             file.filename = os.path.basename(file.filename)
             file_path = os.path.join(dirpath, unquote(file.filename))
             file.save(file_path)
+            # Apply the stats to the saved file
+            # Cant set ctime of file in python
+            # Hence at time of upload only set mtime and use this for sorting
+            created_time_ms = request.form.get("createdTime", type=float)
+            modified_time_ms = request.form.get("lastModifiedTime", type=float)
+            if created_time_ms:
+                created_time = created_time_ms / 1000  # Python accepts in seconds
+                os.utime(file_path, (created_time, created_time))  # Update both access and modified times
+            if modified_time_ms:
+                modified_time = modified_time_ms / 1000
+                os.utime(file_path, (modified_time, modified_time))
             saved_files.append(file.filename)
         logger.debug("file received")
 
