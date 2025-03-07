@@ -1,0 +1,22 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  # pull_request:
+  #   branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build -t mediahavenbd .
+    - name: Stop and Remove Existing Container (if running)
+      run: docker stop mediahavenbd && docker rm mediahavenbd
+    - name: Run the container
+      run: docker run -d -v "/data:/data" --env-file /home/dubut/envs/mediahavenbd.env -p 5001:5001 --name mediahavenbd mediahavenbd
