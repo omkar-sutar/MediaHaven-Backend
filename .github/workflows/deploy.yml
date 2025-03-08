@@ -19,4 +19,4 @@ jobs:
     - name: Stop and Remove Existing Container (if running)
       run:   docker ps -q --filter "name=mediahavenbd" | grep -q . && docker stop mediahavenbd && docker rm mediahavenbd || true
     - name: Run the container
-      run: docker run -d -v "/data:/data" --env-file /home/dubut/envs/mediahavenbd.env -p 5001:5001 --name mediahavenbd mediahavenbd
+      run: docker run -d -v "/data:/data" --env-file /home/dubut/envs/mediahavenbd.env -p 5001:5001 --restart always --name mediahavenbd mediahavenbd
